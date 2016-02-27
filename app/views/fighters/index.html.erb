@@ -1,0 +1,31 @@
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Avatar</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Experience</th>
+    <th>Skills</th>
+    <th>Wins</th>
+    <th>Draw</th>
+    <th>Lost</th>
+  </tr>
+</thead>
+</tbody>
+<% @fighters.each do |f| %>
+<tr>
+<th><%= image_tag f.avatar.url(:thumb) %></th>
+<th><%= f.firstname %></th>
+<th><%= f.lastname %></th>
+<th><%= exp(f.id) %></th>
+<th><% f.skills.each do |g| %>
+<%= g.name %>&nbsp
+<%end%> 
+</th>
+    <th> <%= wins(f.id) %></th>
+    <th> <%= draws(f.id) %></th>
+    <th> <%= lost(f.id) %></th>
+</tr>
+<%end %>
+</tbody>
+</table>

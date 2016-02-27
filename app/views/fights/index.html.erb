@@ -1,0 +1,14 @@
+<div class="row">
+
+    	<% @fights.each do |fight| %>
+	    	<%= link_to fight do %>
+			<div class="col-lg-4 col-sm-6 text-center" >
+				
+				<div style=" border: 2px solid;
+				border-radius: 150px; height:200px; line-height: 200px; margin-bottom: 30px;">
+					<%= fight.first.firstname %> VS <%=	fight.second.firstname %>
+				</div>
+			</div>
+			<%end%>
+		<% end %>
+</div>

@@ -1,0 +1,6 @@
+<%= simple_form_for @fight do |f| %>
+  <%= f.association :first, label_method: :lastname, value_method: :id, include_blank: false%>
+  <h2> VS </h2>
+  <%= f.association :second, label_method: :lastname, value_method: :id, include_blank: false%>
+  <%= f.button :submit %>
+<% end %>
