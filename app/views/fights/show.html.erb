@@ -1,8 +1,51 @@
 
-<%= image_tag @fight.first.avatar.url(:medium), 
-class: "img-circle img-responsive img-center"%>
 
-<h1 class="text-center"> VS </h1>
 
-<%= image_tag @fight.second.avatar.url(:medium),
-class: "img-circle img-responsive img-center" %>
+
+<% if @fight.draw %>
+	<h1 class="text-center"> DRAW</h1>
+
+<%else %>
+
+	<h1 class="text-center"> Winner: <strong> 
+		<% if @fight.first == @fight.winner %>
+		<%= @fight.first.firstname %> <%= @fight.first.lastname %> 
+		<% else %>
+		<%= @fight.second.firstname %> <%= @fight.second.lastname %> 
+		<% end %>
+	</strong> </h1>
+
+<%end %>
+
+
+</br>
+<div class="row">
+	<div class="col-md-5"> 
+		<div class="col-md-7">
+			<%= image_tag @fight.first.avatar.url(:medium), 
+			class: "img-circle img-responsive img-center"%>
+		</div>		
+		<div class="col-md-5"> 
+			<h3> <%= @fight.first.firstname %> <%= @fight.first.lastname %> </h3>
+			<h2> Points: <%= @fight.atack %> </h2>
+		</div>
+	</div>
+	<div class="col-md-2"> 
+	
+
+
+	<h1 class="text-center"> VS </h1> 
+
+	</div>
+
+	<div class="col-md-5"> 
+		<div class="col-md-5"> 
+			<h3> <%= @fight.second.firstname %> <%= @fight.second.lastname %>  </h3>
+			<h2> Points: <%= @fight.atack2 %> </h2>
+		</div>
+		<div class="col-md-7">
+			<%= image_tag @fight.second.avatar.url(:medium),
+			class: "img-circle img-responsive img-center" %>
+		</div>
+	</div>
+</div>

@@ -1,31 +1,76 @@
-<table class="table table-striped">
-<thead>
-  <tr>
-    <th>Avatar</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Experience</th>
-    <th>Skills</th>
-    <th>Wins</th>
-    <th>Draw</th>
-    <th>Lost</th>
-  </tr>
-</thead>
-</tbody>
+
+
+
+
+
+
+
+
+<h1 class="page-header">Fighters
+    <small>ranking</small>
+</h1>
+
+
+<div class="row">
+<div class="col-xs-12 col-md-8" >
+</div>
+
+<div class="col-xs-6 col-md-4">
+		
+		<div class="col-md-6 ">
+		<h2><small>Experience</small> </h2>
+		</div><div class="col-md-2">
+		<h2><small>Wins</small> </h2>
+		</div><div class="col-md-2">
+		<h2><small>Draws</small> </h2>
+		</div><div class="col-md-2">
+		<h2><small>Lost</small> </h2> 
+		</div>
+
+</div>
+</div>
+</br>
+
+
 <% @fighters.each do |f| %>
-<tr>
-<th><%= image_tag f.avatar.url(:thumb) %></th>
-<th><%= f.firstname %></th>
-<th><%= f.lastname %></th>
-<th><%= exp(f.id) %></th>
-<th><% f.skills.each do |g| %>
-<%= g.name %>&nbsp
-<%end%> 
-</th>
-    <th> <%= wins(f.id) %></th>
-    <th> <%= draws(f.id) %></th>
-    <th> <%= lost(f.id) %></th>
-</tr>
+	<%= link_to f, class:'niceLink'  do %>
+	<div class="row">
+		<div class="col-xs-12 col-md-8" >
+			<div class="col-xs-10 col-md-7">
+			<%= image_tag f.avatar.url(:medium) %>
+
+			</div>
+			<div class="col-xs-8 col-md-5">
+			<h3> <%= f.firstname %> <%= f.lastname%> </h3>
+			</div>
+		</div>
+
+		<div class="col-xs-6 col-md-4">
+	<div class="col-md-6">
+	<div class="col-md-2"></div>
+	<div class="col-md-2">
+		<h1><small><%= exp(f.id) %></small> </h2>
+	</div>
+	</div><div class="col-md-2">
+		<h2><small><%= wins(f.id) %></small> </h2>
+	</div><div class="col-md-2">
+		<h2><small><%= draws(f.id) %></small> </h2>
+	</div><div class="col-md-2">
+		<h2><small><%= lost(f.id) %></small> </h2>
+	</div>
+		</div>
+	</div>
+	</br>
+	<% end %>
 <%end %>
-</tbody>
-</table>
+
+
+
+<div class="col-xs-12 col-md-8" >
+
+</div>
+
+<div class="col-xs-6 col-md-4">
+
+</div>
+

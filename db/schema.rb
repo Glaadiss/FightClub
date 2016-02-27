@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160226013712) do
     t.integer  "draw"
     t.integer  "draw2"
     t.integer  "lost"
+    t.integer  "atack"
+    t.integer  "atack2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -31,7 +31,8 @@ class ApplicationController < ActionController::Base
 			fighter2.skills.each do |skill|
 				sum2+= skill.level
 			end
-
+			@fight.atack = sum
+			@fight.atack2 = sum2
 			if sum==sum2 
 				@fight.draw = first;
 				@fight.draw2 = second;
@@ -43,10 +44,27 @@ class ApplicationController < ActionController::Base
 				@fight.lost = first;
 			end
 
-			@fight.save
-			redirect_to @fight  
+			
 
 		end
 
+	end
+
+
+	def add_default_skills
+		skills = Skill.all
+			skill1 = Skill.new(name: 'Bite', level: '3')
+			skill1.save
+			skill2= Skill.new(name: 'Kick', level: '2')
+			skill2.save
+			skill3 = Skill.new(name: 'Jump', level:'4')
+			skill3.save
+			skill4 = Skill.new(name: 'Shoot', level:'5')
+			skill4.save
+			skill5 = Skill.new(name: 'Sleep', level:'1')
+			skill5.save
+			skill6 = Skill.new(name: 'Kiss', level:'2')
+			skill6.save
+			redirect_to new_fighter_path
 	end
 end

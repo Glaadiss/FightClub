@@ -7,7 +7,8 @@ class CreateFights < ActiveRecord::Migration
       t.integer :draw
       t.integer :draw2
       t.integer :lost
-
+      t.integer :atack
+      t.integer :atack2
       t.timestamps null: false
     end
   end

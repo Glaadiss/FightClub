@@ -17,8 +17,12 @@ class SkillsController < ApplicationController
 
   def create
   	@skill = Skill.new(skill_params)
-  	@skill.save
-  	redirect_to skills_path
+  	if @skill.save
+  		flash[:success] = "Skill added"
+  		redirect_to skills_path
+  	else
+  		render('new')
+  	end
   end
 
   private

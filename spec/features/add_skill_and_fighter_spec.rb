@@ -16,7 +16,7 @@ feature "adding skill and fighter" do
 		page.check('Growl')
 		page.attach_file("Avatar", Rails.root + 'app/assets/images/bird.png')
 		click_on("Create Fighter")
-		expect(page).to have_content('Scooby' && 'Doo' && 'Nice dog from TV' && 'Growl')
+		expect(page).to have_content('Scooby' && 'Doo')
 		page.find('img')['src'].should have_content 'bird.png'
 	end
 end

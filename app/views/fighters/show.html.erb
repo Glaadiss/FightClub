@@ -1,2 +1,35 @@
-<%= image_tag @fighter.avatar.url(:medium) %>
-<%= @fighter.name %>
+
+<div class="row">
+	<div class="col-md-6" >
+	<%= image_tag @fighter.avatar.url(:big) %>
+	</div>
+	<div class="col-md-6" >
+	<h2><%= @fighter.firstname %> </h2>
+	<h2><%= @fighter.lastname %> </h2>
+	<p><i><%= @fighter.description%> </i></p>
+	</br>
+	<h3> Experience:  <%= exp(@fighter.id)%> </h3>
+	<h3> Wins:  <%= wins(@fighter.id)%> </h3>
+	<h3> Draws:  <%= draws(@fighter.id)%> </h3>
+	<h3> Lost:  <%= lost(@fighter.id)%> </h3>
+	</br>
+	<h3> Skills: </h3>
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Level</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	    <% @fighter.skills.each do |f| %>
+	      <tr>
+	        <td><%= f.name %></td>
+	        <td><%= f.level %></td>
+	      </tr>   
+	    <% end %>
+	    </tbody>
+	</table>
+	</div>
+</div>
+</br>		
