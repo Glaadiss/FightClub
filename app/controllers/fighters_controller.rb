@@ -1,8 +1,13 @@
+require 'will_paginate/array' 
+
 class FightersController < ApplicationController
 	before_action :find_fighter, only: [:edit,:show,:destroy,:delete,:update]
+	before_action :add_default, only: [:new]
 
 	def index
-		@fighters = Fighter.all.sort {|a,b| a.exp <=> b.exp}.reverse
+		## Sort by experience points
+		fighters = Fighter.all.sort {|a,b| a.exp <=> b.exp}.reverse
+		@fighters = fighters.paginate(:page => params[:page], :per_page => 5)
 
 	end
 
@@ -12,9 +17,7 @@ class FightersController < ApplicationController
 
 	def new
 		@fighter = Fighter.new
-		if Skill.all.empty?
-			add_default_skills
-		end
+
 	end
 
 	def create
@@ -22,6 +25,8 @@ class FightersController < ApplicationController
 		if previous_fighter_id
 			previous_fighter_id = previous_fighter_id.id
 		end
+
+		##  checking whether user check at least 3 skills and no more than 8 # # 		
 		@fighter = Fighter.new(fighter_params)
 		n =-1;
 		params[:fighter][:skill_ids].each do |skill_id| 
@@ -34,15 +39,23 @@ class FightersController < ApplicationController
 			flash[:danger] = "You must check no more than 8 skills"
 			redirect_to new_fighter_path
 		else
+		#######
+
 			if @fighter.save
 				fighter_id = Fighter.order("created_at").last.id
+
+				## Add relationships between fighter and skill for each checked skill. 
 				params[:fighter][:skill_ids].each do |skill_id| 
 					Relation.create(fighter_id: fighter_id, skill_id: skill_id)
 				end
+				#######
+
+				## If exist at least 2 fighters, do fight between 2 previously added fighters.
 				if previous_fighter_id
 					fight(previous_fighter_id,fighter_id)
 					@fight.save
 				end
+				#######
 				flash[:succes] = "Fighter added"
 				redirect_to @fighter
 			else
@@ -71,6 +84,12 @@ class FightersController < ApplicationController
 
 	def find_fighter
 		@fighter = Fighter.find(params[:id])
+	end
+
+	def add_default
+		if Skill.all.empty?
+            add_default_skills
+        end
 	end
 
 

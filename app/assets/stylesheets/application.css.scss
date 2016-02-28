@@ -22,3 +22,63 @@
 	text-decoration: none !important;
 	color: #000;
 }
+
+*{
+	font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    font-variant: inherit;
+} 
+
+.simple_form *{
+    font-size:20px;
+}
+
+.table *{
+    font-size:20px;
+}
+
+#main{
+    margin-top: 100px;
+}
+
+.navbar-nav li{
+    padding: 30px 10px 30px 10px;
+	font-size: 32px;
+}
+
+
+.navbar-header a{
+	font-size: 44px !important;
+    padding:15px;
+}
+
+.position{
+    font-size: 48px;
+}
+
+.fight {
+    border: 2px solid;
+    border-radius: 150px; 
+    height:200px; 
+    line-height: 200px !important; 
+    margin-bottom: 30px; 
+    font-size: 32px; 
+    background-color: #000;
+
+}
+
+.fight span{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px; 
+    color: #FFF;
+
+}
+
+.fight:hover {
+    background-color: #333;
+}
+
+.pagination *{
+	font-size: 22px;
+}

@@ -4,10 +4,8 @@
 	    	<%= link_to fight, class:'niceLink'   do %>
 			<div class="col-lg-4 col-sm-6 text-center" >
 				
-				<div style=" border: 2px solid;
-				border-radius: 150px; height:200px; line-height: 200px !important; margin-bottom: 30px; font-size: 150%;">
-					<span style="  display: inline-block;
-					vertical-align: middle;line-height: 30px; ">
+				<div class="fight">
+					<span class="spanFight">
 					<%= fight.first.lastname %> </br>VS</br>
 					<%=	fight.second.lastname %> 
 
@@ -16,4 +14,7 @@
 			</div>
 			<%end%>
 		<% end %>
+
 </div>
+
+<%= will_paginate @fights %>

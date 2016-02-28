@@ -14,23 +14,26 @@ class ApplicationController < ActionController::Base
 
 			sum = 0
 			sum2 = 0
+			#add to fighter's atack points 1/3 from experience and sum from skills levels
 			fighter = Fighter.find(first)
 			expo = Fight.where(winner: first).count*3
 			expo+= Fight.where(draw: first).count
 			expo+= Fight.where(draw2: first).count
-			sum+= expo
+			sum+= expo/3
 			fighter.skills.each do |skill|
 				sum+= skill.level
 			end
-
+			#######
+			#add to second fighter's atack points 1/3 from experience and sum from skills levels
 			fighter2 = Fighter.find(second)
 			expo = Fight.where(winner: second).count*3
 			expo+= Fight.where(draw: second).count
 			expo+= Fight.where(draw2: second).count	
-			sum2+=expo
+			sum2+=expo/3
 			fighter2.skills.each do |skill|
 				sum2+= skill.level
 			end
+			#######
 			@fight.atack = sum
 			@fight.atack2 = sum2
 			if sum==sum2 
@@ -50,7 +53,7 @@ class ApplicationController < ActionController::Base
 
 	end
 
-
+	## Add default skills after first application start.
 	def add_default_skills
 		skills = Skill.all
 			skill1 = Skill.new(name: 'Bite', level: '3')
@@ -67,4 +70,8 @@ class ApplicationController < ActionController::Base
 			skill6.save
 			redirect_to new_fighter_path
 	end
+	##########
+
+
+
 end

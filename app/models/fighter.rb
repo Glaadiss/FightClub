@@ -15,5 +15,5 @@ class Fighter < ActiveRecord::Base
 		expo+= Fight.where(draw2: self.id).count
 		return expo
   end
-
+self.per_page = 5
 end

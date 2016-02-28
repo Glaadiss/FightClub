@@ -8,7 +8,7 @@
 <%else %>
 
 	<h1 class="text-center"> Winner: <strong> 
-		<% if @fight.first == @fight.winner %>
+		<% if @fight.first.id == @fight.winner %>
 		<%= @fight.first.firstname %> <%= @fight.first.lastname %> 
 		<% else %>
 		<%= @fight.second.firstname %> <%= @fight.second.lastname %> 

@@ -3,6 +3,8 @@ class SkillsController < ApplicationController
 
   def index
   	@skills = Skill.all
+    @skills= @skills.paginate(:page => params[:page], :per_page => 5)
+
   end
 
   def show
