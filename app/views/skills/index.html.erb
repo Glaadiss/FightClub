@@ -13,9 +13,13 @@
     </thead>
     <tbody>
     <% @skills.each do |f| %>
+      
       <tr>
+
         <td><%= f.name %></td>
         <td><%= f.level %></td>
+        <td><%=link_to "Edit", edit_skill_path(f.id)  %></td>
+        <td><%=link_to "Delete", f,  method: :delete %></td>
       </tr>   
     <% end %>
     </tbody>

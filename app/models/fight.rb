@@ -10,5 +10,5 @@ class Fight < ActiveRecord::Base
   	end
   end
 
-self.per_page = 6
+
 end

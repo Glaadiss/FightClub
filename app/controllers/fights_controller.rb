@@ -1,7 +1,8 @@
 class FightsController < ApplicationController
+	
 	def index
 		@fights = Fight.order('created_at DESC')
-		@fights = @fights.paginate(:page => params[:page], :per_page => 5)
+		@fights = @fights.paginate(:page => params[:page], :per_page => 6)
 	end
 
 	def show

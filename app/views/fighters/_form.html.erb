@@ -2,6 +2,7 @@
   <%= f.input :firstname %>
   <%= f.input :lastname%>
   <%= f.input :description, as: :text%>
+
   <%= f.association :skills,  as: :check_boxes %>
   <%= f.input :avatar, as: :file%>
   <%= f.button :submit %>

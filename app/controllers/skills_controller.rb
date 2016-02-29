@@ -11,6 +11,21 @@ class SkillsController < ApplicationController
   end
 
   def edit
+
+  end
+
+  def destroy
+    @skill.destroy
+    redirect_to skills_path
+  end
+
+  def update
+    if @skill.update(skill_params)
+      flash[:success] = "skill updated"
+      redirect_to skills_path
+    else
+      render 'edit'
+    end   
   end
 
   def new
