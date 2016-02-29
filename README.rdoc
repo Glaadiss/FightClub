@@ -1,6 +1,8 @@
 Fight Club !!
 
 
+Link to app on heroku: http://club-fight.herokuapp.com/
+
 Specifications to this application:
 
 Tips:
@@ -11,5 +13,6 @@ Tips:
 
 	function to create a fight: app/controllers/applcation_controller.rb
 
-
-
+	***
+	To show someone fighter, visit home page and click on any user
+	
